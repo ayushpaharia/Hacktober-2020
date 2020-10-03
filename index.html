@@ -1,13 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link rel="stylesheet" href="preset.css">
+  <style>
+    label[for="upload"] {
+      display: flex;
+      align-items: center;
+    }
+    #custom-txt {
+      display: flex;
+      flex-direction: column;
+       margin-top: 10px;
+       margin-bottom: 10px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      color: blue;
+      border: 1px solid blue;
+      box-shadow: 0 1px 14px rgba(0,0,0,0.25);
+      padding: 10px 10px;
+    }
+    .button {
+      margin-left: 5px;
+    }
+  </style>
 </head>
 <body>
-    <div class="main">
-        <p class="text">Hey there!</p>
+  <input type="file" id="upload" hidden multiple>
+  <label for="upload">
+    <div class="btn">
+      <span class="material-icons" style="color: blue;">
+      perm_media
+      </span>
+      <span class="button">Add Image</span>
     </div>
+  </label>
+  <span id="custom-txt">
+    <span class="def">No image chosen yet</span>
+  </span>
+  <div class="img-display">
+    <img src="" alt="">
+  </div>
+
+  <script>
+        let x = document.getElementById("upload");
+        let y = document.getElementById("custom-txt");
+        let display = document.querySelector(".img-display");
+        x.addEventListener("change", function (event) {
+            let uploadedFileName = event.target.files;
+            if(uploadedFileName) {
+            document.querySelector(".def").style.display = "none";
+            for(let i = 0; i < uploadedFileName.length; i++) {
+              let e = document.createElement("span");
+              let txt = document.createTextNode(uploadedFileName[i].name);
+              e.appendChild(txt);
+              y.appendChild(e);
+              let src = URL.createObjectURL(uploadedFileName[i]);
+              let img = document.createElement("img");
+              img.setAttribute("src",src);
+              img.setAttribute("width",200);
+              display.appendChild(img);
+            }
+          }
+        });
+
+  </script>
 </body>
 </html>
