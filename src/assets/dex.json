@@ -1,0 +1,10 @@
+{
+    "dex" : [
+        {
+            "name" : "Bulbasaur",
+            "type" : "grass/poison",
+            "evol" : "Ivysaur",
+            "img" : "https://pm1.narvii.com/6778/d24c6fd43bf58b063572060e2c9f7c88cde8f5c0v2_00.jpg" 
+        }
+    ]
+}
